@@ -4,17 +4,13 @@ var clock = document.getElementById("clock");
 
 var start = Date.now();
 var timerB = 3000;
-var timerA = 20000;
+var timerA = 5000;
 
 window.onload = function() {
-    var reloading = sessionStorage.getItem("reloading");
-    if (reloading) {
-        sessionStorage.removeItem("reloading");
-        timer(timerA);
-        clock.innerHTML = "START!";
-        setTimeout(500);
-        timer(timerB);
-    }
+    
+    clock.innerHTML = "START!";
+    setTimeout(500);
+    timer(timerB);
 }
 
 function reloadP() {
@@ -24,7 +20,7 @@ function reloadP() {
 
 function timer(time) {
     var delta = Date.now() - start;
-    document.getElementById("demo").innerHTML = time-delta;
+    clock.innerHTML = time-delta;
     if (time-delta === 0) {return}
 }
 
@@ -62,8 +58,15 @@ function animate(){
     }
 }
 
+document.addEventListener("click", event => {
+    if(block.classList == "block-animate"){return}
+    block.classList.add("block-animate");
+})
+
 document.addEventListener('keyup', event => {
     if (event.code === 'Space') {
       jump()
     }
+    if(block.classList == "block-animate"){return}
+    block.classList.add("block-animate");
   })
