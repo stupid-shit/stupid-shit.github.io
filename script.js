@@ -4,10 +4,11 @@ var countdown = document.getElementById("countdown");
 
 var timeLeft = 10;
 var downloadTimer = setInterval(function(){
-  if(timeLeft <= 0){
+  if(timeLeft === 0){
     clearInterval(downloadTimer);
-    countdown.innerHTML = "Finished";
-  } else {
+    window.location.replace("https://website1-nine.vercel.app/easteregg");
+  }
+  else {
     countdown.innerHTML = timeleft + " seconds remaining";
   }
   timeLeft -= 1;
@@ -32,9 +33,7 @@ function jump(){
         if(blockLeft<-10 && blockLeft>-60 && characterTop>=130){
             block.style.animation="none";
             block.style.display="none";
-            alert("game over");
-            //window.location.replace("https://website1-nine.vercel.app/");
-
+            window.location.replace("https://website1-nine.vercel.app/");
         }
     },10);
 
