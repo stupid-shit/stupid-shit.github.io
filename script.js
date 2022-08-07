@@ -3,20 +3,23 @@ var block = document.getElementById("block");
 var countdown = document.getElementById("countdown");
 
 var timeLeft = 10;
-var downloadTimer = setInterval(function(){
-  if(timeLeft === 0){
-    clearInterval(downloadTimer);
-    window.location.replace("https://website1-nine.vercel.app/easteregg");
-  }
-  else {
-    countdown.innerHTML = timeleft + " seconds remaining";
-  }
-  timeLeft -= 1;
-}, 1000);
 
 window.onload = function() {
-    clock.innerHTML = "START";
+    countdown.innerHTML = "START";
+    timeleft = 10;
 }
+
+var downloadTimer = setInterval(function(){
+    if(timeLeft === 0){
+      clearInterval(downloadTimer);
+      countdown.innerHTML = "SUCCESS";
+      window.location.replace("https://website1-nine.vercel.app/easteregg");
+    }
+    else if (block.classList == "block-animate"){
+      countdown.innerHTML = timeLeft + " SECONDS REMAINING";
+      timeLeft -= 1;
+    }
+  }, 1000);
 
 function jump(){    
     if(character.classList == "animate"){return}
@@ -33,6 +36,7 @@ function jump(){
         if(blockLeft<-10 && blockLeft>-60 && characterTop>=130){
             block.style.animation="none";
             block.style.display="none";
+            countdown.innerHTML = "FAIL";
             window.location.replace("https://website1-nine.vercel.app/");
         }
     },10);
