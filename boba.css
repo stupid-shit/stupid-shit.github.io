@@ -1,3 +1,7 @@
+body {
+    background-image: url("./img/boba-background.png");
+}
+
 #character {
     width: 100px;
     height: 100px;
