@@ -1,27 +1,20 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
-var clock = document.getElementById("clock");
+var countdown = document.getElementById("countdown");
 
-var start = Date.now();
-var timerB = 3000;
-var timerA = 5000;
+var timeLeft = 10;
+var downloadTimer = setInterval(function(){
+  if(timeLeft <= 0){
+    clearInterval(downloadTimer);
+    countdown.innerHTML = "Finished";
+  } else {
+    countdown.innerHTML = timeleft + " seconds remaining";
+  }
+  timeLeft -= 1;
+}, 1000);
 
 window.onload = function() {
-    timer(timerA);
-    clock.innerHTML = "START!";
-    setTimeout(500);
-    timer(timerB);
-}
-
-function reloadP() {
-    sessionStorage.setItem("reloading", "true");
-    document.location.reload();
-}
-
-function timer(time) {
-    var delta = Date.now() - start;
-    clock.innerHTML = time-delta;
-    if (time-delta === 0) {return}
+    clock.innerHTML = "START";
 }
 
 function jump(){    
@@ -39,8 +32,9 @@ function jump(){
         if(blockLeft<-10 && blockLeft>-60 && characterTop>=130){
             block.style.animation="none";
             block.style.display="none";
-            alert("game over.");
-            // REDIRECT HERE
+            alert("game over");
+            //window.location.replace("https://website1-nine.vercel.app/");
+
         }
     },10);
 
