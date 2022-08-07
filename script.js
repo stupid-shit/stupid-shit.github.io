@@ -7,7 +7,7 @@ var timerB = 3000;
 var timerA = 5000;
 
 window.onload = function() {
-    
+    timer(timerA);
     clock.innerHTML = "START!";
     setTimeout(500);
     timer(timerB);
