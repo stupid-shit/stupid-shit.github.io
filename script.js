@@ -40,6 +40,7 @@ function jump(){
             block.style.animation="none";
             block.style.display="none";
             alert("game over.");
+            // REDIRECT HERE
         }
     },10);
 
